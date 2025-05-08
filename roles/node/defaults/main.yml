@@ -1,0 +1,34 @@
+---
+# maintains directories and paths
+node_home_dir: /opt/{{ service_identifier }}
+
+node_bin_dir: "{{ node_home_dir }}/bin"
+node_config_dir: "{{ node_home_dir }}/config"
+node_data_dir: "{{ node_home_dir }}/data"
+node_env_dir: "{{ node_home_dir }}/environment"
+node_log_dir: "{{ node_home_dir }}/log"
+node_key_pairs_dir: "{{ node_home_dir }}/key-pairs"
+
+node_authorities_data_dir: "{{ node_data_dir }}/authorities_db"
+node_consensus_data_dir: "{{ node_data_dir }}/consensus_db"
+
+node_directories:
+  - "{{ node_home_dir }}"
+  - "{{ node_bin_dir }}"
+  - "{{ node_config_dir }}"
+  - "{{ node_data_dir }}"
+  - "{{ node_env_dir }}"
+  - "{{ node_key_pairs_dir }}"
+  - "{{ node_log_dir }}"
+  - "{{ node_authorities_data_dir }}"
+  - "{{ node_consensus_data_dir }}"
+
+node_config_file_path: "{{ node_config_dir }}/{{ node_config_file_name }}"
+node_log_file_path: "{{ node_log_dir }}/{{ service_identifier }}.log"
+
+node_environment_general_file_path: "{{ node_env_dir }}/{{ node_environment_general_file_name }}"
+
+node_protocol_key_path: "{{ node_key_pairs_dir }}/{{ node_protocol_key_file_name }}"
+node_consensus_key_path: "{{ node_key_pairs_dir }}/{{ node_consensus_key_file_name }}"
+node_network_key_path: "{{ node_key_pairs_dir }}/{{ node_network_key_file_name }}"
+node_class_groups_key_path: "{{ node_key_pairs_dir }}/{{ node_class_groups_key_file_name }}"

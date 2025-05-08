@@ -1,0 +1,14 @@
+---
+# maintains file name, binary names, and anything which is not a diretcory or path
+
+# config file names
+node_config_file_name: "{{ type }}.yaml"
+
+# keys file names
+node_protocol_key_file_name: protocol.key
+node_consensus_key_file_name: consensus.key
+node_network_key_file_name: network.key
+node_class_groups_key_file_name: class-groups.key
+
+# Environment file names
+node_environment_general_file_name: "{{ service_identifier }}.env"
