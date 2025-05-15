@@ -7,20 +7,20 @@ consensus-key-pair:
 network-key-pair:
   path: {{ node_network_key_path }}
 db-path: {{ node_authorities_data_dir }}
-network-address: /ip4/0.0.0.0/tcp/{{ ika.validator.ports.network_address_port }}/http
+network-address: /ip4/0.0.0.0/tcp/{{ network_port }}/http
 sui-connector-config:
   sui-rpc-url: "{{ vault.testnet.sui.rpc_url }}"
   sui-chain-identifier: "testnet"
-  ika-package-id: "0x19e5c12ec00b68972e9652843464888caef1ca57ad42c4408a8bea6569ec97f6"
-  ika-system-package-id: "0x3ddccffe02ae1d6e6b650153aba867d1b40b112dc6584e0ba4b64d062032d44a"
-  ika-system-object-id: "0xb6f5c3586573540c92b6003f86f03f3b8a87907943344643c56afcc3bba8cf8f"
-metrics-address: 0.0.0.0:{{ ika.validator.ports.metrics_port }}
-admin-interface-port: {{ ika.validator.ports.admin_interface_port }}
+  ika-package-id: "{{ vault.testnet.external.ika_package_id }}"
+  ika-system-package-id: "{{ vault.testnet.external.ika_system_package_id }}"
+  ika-system-object-id: "{{ vault.testnet.external.ika_system_object_id }}"
+metrics-address: 0.0.0.0:{{ metrics_port }}
+admin-interface-port: {{ admin_port }}
 consensus-config:
   db-path: {{ node_consensus_data_dir }}
 p2p-config:
-  listen-address: 0.0.0.0:{{ ika.validator.ports.p2p_port }}
-  external-address: /dns/{{ ika.validator.external_address }}/udp/{{ ika.validator.ports.p2p_port }}
+  listen-address: 0.0.0.0:{{ p2p_port }}
+  external-address: /dns/{{ ika.validator.external_address }}/udp/{{ p2p_port }}
   anemo-config:
     # The default and recommended max-concurrent-connections: 0 configuration does not affect inter-validator 
     # state sync but will restrict all fullnodes from syncing.
