@@ -1,24 +1,24 @@
 ---
 node_ufw_rules:
-  - port: "{{ ika.validator.ports.p2p_port }}"
+  - port: "{{ p2p_port }}"
     proto: udp
     rule: allow
     from: any
     comment: p2p_port
 
-  - port: "{{ ika.validator.ports.network_address_port }}"
+  - port: "{{ network_port }}"
     proto: tcp
     rule: allow
     from: any
-    comment: network_address_port
+    comment: network_port
 
-  - port: "{{ ika.validator.ports.consensus_address_port }}"
+  - port: "{{ consensus_port }}"
     proto: udp
     rule: allow
     from: any
-    comment: consensus_address_port
+    comment: consensus_port
 
-  - port: "{{ ika.validator.ports.metrics_port }}"
+  - port: "{{ metrics_port }}"
     proto: tcp
     rule: allow
     from: "{{ monitor_server_dns }}"
