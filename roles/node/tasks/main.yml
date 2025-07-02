@@ -24,13 +24,16 @@
   notify:
     - Restart service
 
-- name: Copy node binary
+- name: Copy node and CLI binaries
   ansible.builtin.copy:
-    src: "{{ env }}/ika-node-linux-x86"
-    dest: "{{ node_bin_dir }}/{{ service_identifier }}"
+    src: "{{ env }}/{{ item.src }}"
+    dest: "{{ node_bin_dir }}/{{ item.dest }}"
     owner: root
     group: root
     mode: "0755"
+  loop:
+    - { src: "{{ node_binaries.ika_default.default_binary_name }}", dest: "{{ node_binaries.ika_default.dest_binary_name }}" }
+    - { src: "{{ node_binaries.ika_cli.default_binary_name }}", dest: "{{ node_binaries.ika_cli.dest_binary_name }}" }
   notify:
     - Restart service
 
