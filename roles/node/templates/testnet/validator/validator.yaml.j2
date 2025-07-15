@@ -1,5 +1,5 @@
-class-groups-key-pair-and-proof:
-  path: {{ node_class_groups_key_path }}
+root-seed:
+  path: {{ node_class_groups_seed_path }}
 protocol-key-pair:
   path: {{ node_protocol_key_path }}
 consensus-key-pair:
@@ -12,8 +12,11 @@ sui-connector-config:
   sui-rpc-url: "{{ vault.testnet.sui.rpc_url }}"
   sui-chain-identifier: "testnet"
   ika-package-id: "{{ vault.testnet.external.ika_package_id }}"
+  ika-common-package-id: "{{ vault.testnet.external.ika_common_package_id }}"
+  ika-dwallet-2pc-mpc-package-id: "{{ vault.testnet.external.ika_dwallet_2pc_mpc_package_id }}"
   ika-system-package-id: "{{ vault.testnet.external.ika_system_package_id }}"
   ika-system-object-id: "{{ vault.testnet.external.ika_system_object_id }}"
+  ika-dwallet-coordinator-object-id: "{{ vault.testnet.external.ika_dwallet_coordinator_object_id }}"
 metrics-address: 0.0.0.0:{{ metrics_port }}
 admin-interface-port: {{ admin_port }}
 consensus-config:
