@@ -31,4 +31,4 @@ node_environment_general_file_path: "{{ node_env_dir }}/{{ node_environment_gene
 node_protocol_key_path: "{{ node_key_pairs_dir }}/{{ node_protocol_key_file_name }}"
 node_consensus_key_path: "{{ node_key_pairs_dir }}/{{ node_consensus_key_file_name }}"
 node_network_key_path: "{{ node_key_pairs_dir }}/{{ node_network_key_file_name }}"
-node_class_groups_key_path: "{{ node_key_pairs_dir }}/{{ node_class_groups_key_file_name }}"
+node_class_groups_seed_path: "{{ node_key_pairs_dir }}/{{ node_class_groups_seed_file_name }}"
