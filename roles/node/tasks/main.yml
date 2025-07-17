@@ -61,11 +61,11 @@
         secret_destination_path: "{{ node_network_key_path }}"
         secret_type: key
     
-    - name: Fetch class groups key and save
+    - name: Fetch class groups seed key and save
       ansible.builtin.include_tasks: tasks/get_and_save_vault_secret.yml
       vars:
-        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ node_class_groups_key_file_name }}"
-        secret_destination_path: "{{ node_class_groups_key_path }}"
+        vault_secret_source_path: "{{ project }}/{{ org }}/{{ type }}/{{ node_class_groups_seed_file_name }}"
+        secret_destination_path: "{{ node_class_groups_seed_path }}"
         secret_type: key
 
 - name: Copy ika general env file
