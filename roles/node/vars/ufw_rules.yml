@@ -13,7 +13,7 @@ node_ufw_rules:
     comment: network_port
 
   - port: "{{ consensus_port }}"
-    proto: udp
+    proto: tcp
     rule: allow
     from: any
     comment: consensus_port
