@@ -28,7 +28,7 @@ node_log_file_path: "{{ node_log_dir }}/{{ service_identifier }}.log"
 
 node_environment_general_file_path: "{{ node_env_dir }}/{{ node_environment_general_file_name }}"
 
-node_protocol_key_path: "{{ node_key_pairs_dir }}/{{ node_protocol_key_file_name }}"
-node_consensus_key_path: "{{ node_key_pairs_dir }}/{{ node_consensus_key_file_name }}"
-node_network_key_path: "{{ node_key_pairs_dir }}/{{ node_network_key_file_name }}"
-node_class_groups_seed_path: "{{ node_key_pairs_dir }}/{{ node_class_groups_seed_file_name }}"
+node_protocol_key_file_path: "{{ node_key_pairs_dir }}/{{ node_protocol_key_file_name }}"
+node_consensus_key_file_path: "{{ node_key_pairs_dir }}/{{ node_consensus_key_file_name }}"
+node_network_key_file_path: "{{ node_key_pairs_dir }}/{{ node_network_key_file_name }}"
+node_root_seed_key_file_path: "{{ node_key_pairs_dir }}/{{ node_root_seed_key_file_name }}"

@@ -1,11 +1,11 @@
-root-seed:
-  path: {{ node_class_groups_seed_path }}
+root-seed-key-pair:
+  path: {{ node_root_seed_key_file_name }}
 protocol-key-pair:
-  path: {{ node_protocol_key_path }}
+  path: {{ node_protocol_key_file_path }}
 consensus-key-pair:
-  path: {{ node_consensus_key_path }}
+  path: {{ node_consensus_key_file_path }}
 network-key-pair:
-  path: {{ node_network_key_path }}
+  path: {{ node_network_key_file_path }}
 db-path: {{ node_authorities_data_dir }}
 network-address: /ip4/0.0.0.0/tcp/{{ network_port }}/http
 sui-connector-config:
@@ -31,4 +31,4 @@ p2p-config:
     max-concurrent-connections: 100
 metrics:
   push-interval-seconds: 60
-  push-url: "https://metrics-proxy-itestnet2.ika-network.net/publish/metrics"
+  push-url: "https://testnet.metrics.ika-network.net:8443/publish/metrics"
