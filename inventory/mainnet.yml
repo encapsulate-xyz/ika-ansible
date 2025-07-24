@@ -1,2 +1,10 @@
 ---
 # maintains mainnet inventory grouped by project names
+all:
+  vars:
+    env: mainnet
+  children:
+    ika:
+      hosts:
+        validator.ika.mainnet.encapsulate.xyz:
+          type: validator

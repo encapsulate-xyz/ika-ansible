@@ -19,5 +19,5 @@ node_binaries:
     default_binary_name: "ika-node-linux-x86"
     dest_binary_name: "{{ service_identifier }}"
   ika_cli:
-    default_binary_name: "ika-cli-linux-x86"
+    default_binary_name: "ika-cli-linux-x86.tar.gz"
     dest_binary_name: "{{ service_identifier }}-cli"
