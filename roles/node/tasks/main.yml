@@ -34,7 +34,7 @@
   notify:
     - Restart service
 
-- name: Copu cli binary
+- name: Copy cli binary
   ansible.builtin.unarchive:
     src: "{{ env }}/{{ node_binaries.ika_cli.default_binary_name }}"
     dest: "{{ node_bin_dir }}"
