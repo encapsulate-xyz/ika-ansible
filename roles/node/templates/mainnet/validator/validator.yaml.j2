@@ -1,0 +1,34 @@
+root-seed-key-pair:
+  path: {{ node_root_seed_key_file_path }}
+protocol-key-pair:
+  path: {{ node_protocol_key_file_path }}
+consensus-key-pair:
+  path: {{ node_consensus_key_file_path }}
+network-key-pair:
+  path: {{ node_network_key_file_path }}
+db-path: {{ node_authorities_data_dir }}
+network-address: /ip4/0.0.0.0/tcp/{{ network_port }}/http
+sui-connector-config:
+  sui-rpc-url: "{{ vault.mainnet.sui.rpc_url }}"
+  sui-chain-identifier: "mainnet"
+  ika-package-id: "{{ vault.mainnet.external.ika_package_id }}"
+  ika-common-package-id: "{{ vault.mainnet.external.ika_common_package_id }}"
+  ika-dwallet-2pc-mpc-package-id: "{{ vault.mainnet.external.ika_dwallet_2pc_mpc_package_id }}"
+  ika-system-package-id: "{{ vault.mainnet.external.ika_system_package_id }}"
+  ika-system-object-id: "{{ vault.mainnet.external.ika_system_object_id }}"
+  ika-dwallet-coordinator-object-id: "{{ vault.mainnet.external.ika_dwallet_coordinator_object_id }}"
+metrics-address: 0.0.0.0:{{ metrics_port }}
+admin-interface-port: {{ admin_port }}
+consensus-config:
+  db-path: {{ node_consensus_data_dir }}
+p2p-config:
+  listen-address: 0.0.0.0:{{ p2p_port }}
+  external-address: /dns/{{ ika.validator.external_address }}/udp/{{ p2p_port }}
+  anemo-config:
+    # The default and recommended max-concurrent-connections: 0 configuration does not affect inter-validator 
+    # state sync but will restrict all fullnodes from syncing.
+    # DO NOT SET THIS TO 0.
+    max-concurrent-connections: 100
+metrics:
+  push-interval-seconds: 60
+  push-url: "https://mainnet.metrics.ika-network.net/publish/metrics"
