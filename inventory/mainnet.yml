@@ -7,5 +7,4 @@ all:
     ika:
       hosts:
         validator.ika.mainnet.encapsulate.xyz:
-        64.20.36.102:
           type: validator
