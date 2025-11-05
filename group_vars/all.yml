@@ -18,6 +18,7 @@ tmp_dir: /tmp
 
 ika:
   validator:
+    source_url: https://github.com/dwallet-labs/ika/releases/download
     ports:
       prefix: 82
       suffix:
