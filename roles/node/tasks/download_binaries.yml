@@ -1,0 +1,39 @@
+---
+- name: Create a tmp directory
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/{{ project }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Download and unarchive the binary
+  vars:
+    suffix_url: "ika-{{ ika[type].version }}-{{ ansible_system | lower }}-x64.zip"
+  ansible.builtin.unarchive:
+    src: "{{ ika[type].source_url }}/{{ ika[type].version }}/{{ suffix_url }}"
+    dest: "{{ tmp_dir }}/{{ project }}"
+    remote_src: true
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy the binary files
+  ansible.builtin.copy:
+    src: "{{ tmp_dir }}/{{ project }}/{{ item.src }}"
+    dest: "{{ node_bin_dir }}/{{ item.dest }}"
+    remote_src: true
+    owner: root
+    group: root
+    force: true
+    mode: "0755"
+  loop:
+    - { src: "{{ node_binaries.ika_default.default_binary_name }}", dest: "{{ node_binaries.ika_default.dest_binary_name }}" }
+    - { src: "{{ node_binaries.ika_cli.default_binary_name }}", dest: "{{ node_binaries.ika_cli.dest_binary_name }}" }
+  notify:
+    - Restart service
+
+- name: Clean up the temporary files in /tmp
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/{{ project }}"
+    state: absent

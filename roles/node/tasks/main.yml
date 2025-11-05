@@ -24,23 +24,8 @@
   notify:
     - Restart service
 
-- name: Copy node binary
-  ansible.builtin.copy:
-    src: "{{ env }}/{{ node_binaries.ika_default.default_binary_name }}"
-    dest: "{{ node_bin_dir }}/{{ node_binaries.ika_default.dest_binary_name }}"
-    owner: root
-    group: root
-    mode: "0755"
-  notify:
-    - Restart service
-
-- name: Copy cli binary
-  ansible.builtin.unarchive:
-    src: "{{ env }}/{{ node_binaries.ika_cli.default_binary_name }}"
-    dest: "{{ node_bin_dir }}"
-    owner: root
-    group: root
-    mode: "0755"
+- name: Include download binaries task
+  ansible.builtin.include_tasks: download_binaries.yml
 
 - name: Fetch secrets from HCP Vault and save to files
   when: fetch_validator_keys | default(false) | bool
