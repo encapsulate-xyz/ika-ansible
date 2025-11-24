@@ -9,7 +9,7 @@
 
 - name: Download and unarchive the binary
   vars:
-    suffix_url: "ika-{{ ika[type].version }}-{{ ansible_system | lower }}-x64.zip"
+    suffix_url: "{{ ika[type].version }}-{{ ansible_system | lower }}-x64.zip"
   ansible.builtin.unarchive:
     src: "{{ ika[type].source_url }}/{{ ika[type].version }}/{{ suffix_url }}"
     dest: "{{ tmp_dir }}/{{ project }}"
