@@ -2,5 +2,5 @@
 # maintains versions and can overwrite all.yml
 ika:
   validator:
-    version: testnet-v1.1.5
+    version: testnet-v1.1.8
     external_address: validator.ika.testnet.encapsulate.xyz
