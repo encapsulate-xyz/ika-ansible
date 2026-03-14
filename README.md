@@ -134,16 +134,16 @@ vault:
 - To deploy validator or fullnode:
 
 ```
-ansible-playbook setup_node.yml -l validator.ika.testnet.encapsulate.xyz -e "fetch_validator_keys=true"
+ansible-playbook setup_node.yml -l validator.ika.testnet.encapsulate.xyz -e "fetch_vault_secrets=true"
 ```
 
 - To deploy bridge node:
 
 ```bash
-ansible-playbook setup_bridge.yml -l bridge.ika.testnet.encapsulate.xyz -e "fetch_validator_keys=true"
+ansible-playbook setup_bridge.yml -l bridge.ika.testnet.encapsulate.xyz -e "fetch_vault_secrets=true"
 ```
 
-**Note**: The default value for `fetch_validator_keys` is false, which disables fetching keys from Hashicorp Vault.
+**Note**: The default value for `fetch_vault_secrets` is false, which disables fetching keys from Hashicorp Vault.
 
 After you run the playbook, it will ask for confirmation, displaying all the variables and the IP address or DNS of the server you are going to deploy.
 
