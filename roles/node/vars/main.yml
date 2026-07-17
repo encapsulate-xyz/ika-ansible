@@ -16,7 +16,7 @@ node_environment_general_file_name: "{{ service_identifier }}.env"
 # Binary file names
 node_binaries:
   ika_default:
-    default_binary_name: "ika-node"
+    default_binary_name: "{{ 'ika-validator' if env | default('') == 'testnet' else 'ika-node' }}"
     dest_binary_name: "{{ service_identifier }}"
   ika_cli:
     default_binary_name: "ika"
