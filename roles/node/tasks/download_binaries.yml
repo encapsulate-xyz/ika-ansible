@@ -9,10 +9,8 @@
 
 - name: Download and unarchive the binary
   vars:
-    version_tag: "{{ ika[type].version.split('%2F')[-1].split('/')[-1] if env | default('') == 'testnet' else ika[type].version }}"
-    file_ext: "{{ 'tar.gz' if env | default('') == 'testnet' else 'zip' }}"
-    file_prefix: "{{ 'ika-' if env | default('') == 'testnet' else '' }}"
-    suffix_url: "{{ file_prefix }}{{ version_tag }}-{{ ansible_facts['system'] | lower }}-x64.{{ file_ext }}"
+    version_tag: "{{ ika[type].version.split('%2F')[-1].split('/')[-1] }}"
+    suffix_url: "ika-{{ version_tag }}-{{ ansible_facts['system'] | lower }}-x64.tar.gz"
   ansible.builtin.unarchive:
     src: "{{ ika[type].source_url }}/{{ ika[type].version }}/{{ suffix_url }}"
     dest: "{{ tmp_dir }}/{{ project }}"
