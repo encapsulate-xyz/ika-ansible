@@ -24,6 +24,16 @@
   notify:
     - Restart service
 
+- name: Copy node genesis blob file
+  ansible.builtin.copy:
+    src: "{{ env }}/genesis.blob"
+    dest: "{{ node_genesis_file_path }}"
+    owner: "{{ service_identifier }}"
+    group: "{{ service_identifier }}"
+    mode: "0644"
+  notify:
+    - Restart service
+
 - name: Include download binaries task
   ansible.builtin.include_tasks: download_binaries.yml
 

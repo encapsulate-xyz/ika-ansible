@@ -3,6 +3,7 @@
 
 # config file names
 node_config_file_name: "{{ type }}.yaml"
+node_genesis_file_name: genesis.blob
 
 # keys file names
 node_protocol_key_file_name: protocol.key

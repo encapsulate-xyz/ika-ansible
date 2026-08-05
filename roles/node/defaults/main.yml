@@ -24,6 +24,7 @@ node_directories:
   - "{{ node_consensus_data_dir }}"
 
 node_config_file_path: "{{ node_config_dir }}/{{ node_config_file_name }}"
+node_genesis_file_path: "{{ node_config_dir }}/{{ node_genesis_file_name }}"
 node_log_file_path: "{{ node_log_dir }}/{{ service_identifier }}.log"
 
 node_environment_general_file_path: "{{ node_env_dir }}/{{ node_environment_general_file_name }}"

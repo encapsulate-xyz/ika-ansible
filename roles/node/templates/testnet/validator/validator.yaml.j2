@@ -9,7 +9,10 @@ network-key-pair:
 db-path: {{ node_authorities_data_dir }}
 network-address: /ip4/0.0.0.0/tcp/{{ network_port }}/http
 sui-connector-config:
-  sui-rpc-url: "{{ sui_rpc_url | default(vault.testnet.sui.rpc_url) }}"
+  sui-data-source:
+    kind: sui-state-mirrored
+    fallback-grpc-url: "{{ sui_rpc_url | default(vault.testnet.sui.rpc_url) }}"
+  sui-genesis: "{{ node_genesis_file_path }}"
   sui-chain-identifier: "testnet"
   ika-package-id: "{{ vault.testnet.external.ika_package_id }}"
   ika-common-package-id: "{{ vault.testnet.external.ika_common_package_id }}"
