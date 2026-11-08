@@ -1,3 +1,0 @@
-# This file contains ignores rule violations for ansible-lint
-group_vars/all.yml yaml[trailing-spaces]
-roles/node/tasks/main.yml yaml[trailing-spaces]
