@@ -14,6 +14,7 @@ sui-connector-config:
     fallback-grpc-url: "{{ sui_rpc_url | default(vault.mainnet.sui.rpc_url) }}"
   sui-genesis: "{{ node_genesis_file_path }}"
   sui-chain-identifier: "mainnet"
+  sui-checkpoint-archive-backfill: [342064086]
   ika-package-id: "{{ vault.mainnet.external.ika_package_id }}"
   ika-common-package-id: "{{ vault.mainnet.external.ika_common_package_id }}"
   ika-dwallet-2pc-mpc-package-id: "{{ vault.mainnet.external.ika_dwallet_2pc_mpc_package_id }}"
