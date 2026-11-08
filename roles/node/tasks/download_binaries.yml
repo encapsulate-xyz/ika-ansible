@@ -11,13 +11,31 @@
   vars:
     version_tag: "{{ ika[type].version.split('%2F')[-1].split('/')[-1] }}"
     suffix_url: "ika-{{ version_tag }}-{{ ansible_facts['system'] | lower }}-x64.tar.gz"
-  ansible.builtin.unarchive:
-    src: "{{ ika[type].source_url }}/{{ ika[type].version }}/{{ suffix_url }}"
-    dest: "{{ tmp_dir }}/{{ project }}"
-    remote_src: true
-    owner: root
-    group: root
-    mode: "0755"
+    archive_path: "{{ tmp_dir }}/{{ project }}/{{ suffix_url }}"
+  block:
+    # unarchive cannot set a download timeout or retry, so a slow or failing
+    # GitHub response would stop the deploy. Download separately to handle both.
+    - name: Download the binary archive
+      ansible.builtin.get_url:
+        url: "{{ ika[type].source_url }}/{{ ika[type].version }}/{{ suffix_url }}"
+        dest: "{{ archive_path }}"
+        owner: root
+        group: root
+        mode: "0644"
+        timeout: 120
+      register: node_archive_download
+      retries: 20
+      delay: 30
+      until: node_archive_download is succeeded
+
+    - name: Unarchive the binary
+      ansible.builtin.unarchive:
+        src: "{{ archive_path }}"
+        dest: "{{ tmp_dir }}/{{ project }}"
+        remote_src: true
+        owner: root
+        group: root
+        mode: "0755"
 
 - name: Copy the binary files
   ansible.builtin.copy:
